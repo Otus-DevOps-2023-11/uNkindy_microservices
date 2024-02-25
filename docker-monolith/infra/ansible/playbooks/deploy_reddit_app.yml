@@ -1,0 +1,21 @@
+---
+- name: Deploy reddit app
+  become: true
+  hosts: docker_node_1
+  gather_facts: false
+  tasks:
+    - name: Pull container
+      docker_image:
+       name: unkindy/otus-reddit:1.0
+       source: pull
+
+    - name: Run Image
+      docker_container:
+        name: reddit
+        image: unkindy/otus-reddit:1.0
+        ports:
+          - 9292:9292
+
+    - name: Output
+      debug:
+        msg: Site deploy on address http://{{ docker_node_1 }}:9292
