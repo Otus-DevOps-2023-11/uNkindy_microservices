@@ -1,17 +1,16 @@
-FROM alpine:3.14
-
-RUN apk update \
-    && apk add ruby-full ruby-dev alpine-sdk \
-    && gem install bundler --no-ri --no-rdoc --version 1.17.2\
-    && rm -rf /var/lib/apk/*
+FROM ubuntu:20.04
+RUN apt-get update -qq && \
+    apt-get install -y ruby-full ruby-dev build-essential && \
+    gem install bundler -v 2.4.22
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 
 WORKDIR $APP_HOME
 ADD Gemfile* $APP_HOME/
-RUN bundle
-ADD . $APP_HOME
+#RUN bundle install
+RUN bundle update --bundler
+COPY . $APP_HOME
 
 ENV POST_SERVICE_HOST post
 ENV POST_SERVICE_PORT 5000
