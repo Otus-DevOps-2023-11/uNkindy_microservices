@@ -3,3 +3,4 @@
 *docker-monolith/infra/terraform/terraform.tfstate
 *docker-monolith/infra/terraform/terraform.tfstate.backup
 *docker-monolith/infra/terraform/terraform.tfvars
+*src/.env
