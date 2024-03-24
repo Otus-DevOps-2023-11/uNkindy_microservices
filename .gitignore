@@ -1,6 +1,6 @@
-**docker-monolith/infra/terraform/.terraform
-*docker-monolith/infra/terraform/.terraform.lock.hcl
-*docker-monolith/infra/terraform/terraform.tfstate
-*docker-monolith/infra/terraform/terraform.tfstate.backup
-*docker-monolith/infra/terraform/terraform.tfvars
-*src/.env
+**docker/docker-monolith/infra/terraform/.terraform
+*docker/docker-monolith/infra/terraform/.terraform.lock.hcl
+*docker/docker-monolith/infra/terraform/terraform.tfstate
+*docker/docker-monolith/infra/terraform/terraform.tfstate.backup
+*docker/docker-monolith/infra/terraform/terraform.tfvars
+*docker/.env
