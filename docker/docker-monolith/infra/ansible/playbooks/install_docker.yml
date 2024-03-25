@@ -32,5 +32,5 @@
 
     - name: Install pip module for docker
       pip:
-        name: 
+        name:
           - docker-py

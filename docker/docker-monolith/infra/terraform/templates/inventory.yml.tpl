@@ -10,5 +10,3 @@ all:
     docker_node_${k}:
       ansible_host: ${ip}
 %{ endfor ~}
-
-
