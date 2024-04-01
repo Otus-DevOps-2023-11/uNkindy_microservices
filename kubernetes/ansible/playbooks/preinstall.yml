@@ -1,0 +1,33 @@
+---
+- name: Update VMs
+  hosts: all
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Update VMs
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Install Soft
+      apt:
+        name:
+          - curl
+          - gpg
+          - containerd
+          - ca-certificates
+          - apt-transport-https
+        state: present
+        enabled: true
+
+    - name: Modprobe core
+      modprobe:
+        name: br_netfilter
+        state: present
+
+    - name: Turn on ip_forwarding
+      sysctl:
+        name: net.ipv4.ip_forward
+        value: '1'
+        sysctl_set: true

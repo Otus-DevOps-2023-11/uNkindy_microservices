@@ -1,0 +1,26 @@
+---
+- name: Add kubernetes repository and install kubeadm
+  hosts: kuber_1
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Initialisation of kubernetes
+      shell: kubeadm init --apiserver-cert-extra-sans="{{ master_host }}" --apiserver-advertise-address=0.0.0.0 --control-plane-endpoint="{{ master_host }}" --pod-network-cidr=10.244.0.0/16 > /tmp/test
+      register: state_master_node == 1
+
+    - name: Make home directory for kubernetes
+      file:
+        path: /root/.kube
+        state: directory
+        mode: '0755'
+
+    - name: Copy cube configuration
+      copy:
+        src:  /etc/kubernetes/admin.conf
+        dest: /root/.kube/admin.conf
+        remote_src: yes
+
+    - name: Fix variable for worker node
+      command: tail -n 2 /tmp/test
+      register: worker_node

@@ -4,3 +4,8 @@
 *docker/docker-monolith/infra/terraform/terraform.tfstate.backup
 *docker/docker-monolith/infra/terraform/terraform.tfvars
 *docker/.env
+*kubernetes/terraform/.terraform
+*kubernetes/terraform/.terraform.lock.hcl
+*kubernetes/terraform/terraform.tfstate
+*kubernetes/terraform/terraform.tfstate.backup
+*kubernetes/terraform/terraform.tfvars
