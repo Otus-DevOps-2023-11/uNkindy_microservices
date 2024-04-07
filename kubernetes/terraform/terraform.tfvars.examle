@@ -1,0 +1,10 @@
+cloud_id                 = ""
+folder_id                = ""
+subnet_id                = ""
+service_account_key_file = "Desktop/key.json"
+public_key_path          = "id_rsa.pub"
+private_key_path         = "/id_rsa"
+
+count_vms                = ""
+image_id                 = ""
+image_size               = ""

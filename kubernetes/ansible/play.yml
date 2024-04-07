@@ -1,0 +1,4 @@
+---
+# - import_playbook: playbooks/preinstall.yml
+# - import_playbook: playbooks/kubeadm_install.yml
+ - import_playbook: playbooks/kuber_install.yml

@@ -1,0 +1,35 @@
+---
+- name: Add kubernetes repository and install kubeadm
+  hosts: all
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Make key directory
+      file:
+        path: /etc/apt/keyrings/
+        state: directory
+        mode: '0755'
+
+    - name: Copy script on hosts
+      copy:
+        src: /home/kita/Documents/Otus_DevOps/Otus_DevOps_Unit_2/uNkindy_microservices/kubernetes/ansible/files/kubeadm_preinstall.sh
+        dest: /tmp/
+
+    - name: Download the public signing key
+      shell:  cd /tmp/ && bash kubeadm_preinstall.sh
+      ignore_errors: true
+
+    - name: Add kuber repo
+      apt_repository:
+        repo: deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /
+        state: present
+
+    - name: Update cache
+      apt:
+        update_cache: true
+
+    - name: Install kubeadm
+      apt:
+        name: kubeadm
+        state: present

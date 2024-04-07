@@ -1,0 +1,11 @@
+---
+all:
+  vars:
+    master_host: 158.160.116.220
+
+  hosts:
+    kuber_1:
+        ansible_host: 158.160.116.220
+
+    kuber_2:
+        ansible_host: 158.160.104.157
